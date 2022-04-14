@@ -61,9 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Final reponse
     if ($result->rowCount() > 0) {
+        $getsession = $signup->getSessionID($email)->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['user_id'] = $getsession['user_id'];
         http_response_code(200);
-        $_SESSION['user_id'] = $email;
-        echo json_encode(['success' => "User registered"]);
+        echo json_encode(['success' => "User registered "]);
     } else {
         http_response_code(400);
         echo json_encode(['error' => 'Something went wrong']);

@@ -28,4 +28,15 @@ class Signup extends Dbh
         }
         return false;
     }
+
+    public function getSessionID($email)
+    {
+        $sql = "SELECT * FROM users WHERE email=?";
+        $statement = $this->connect()->prepare($sql);
+        if (!$statement->execute([$email])) {
+            $statement = null;
+            die();
+        }
+        return $statement;
+    }
 }
