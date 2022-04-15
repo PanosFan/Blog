@@ -22,10 +22,10 @@
         <div class="row mt-5">
             <div class="col-6 mt-5">
                 <!-- ======Login form====== -->
-                <form class="w-50 mx-auto">
+                <form class="w-50 mx-auto" id="loginForm">
                     <div class="mb-3">
                         <label for="lognEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="lognEmail" aria-describedby="emailHelp" required>
+                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
@@ -36,7 +36,7 @@
             </div>
             <div class="col-6 mt-5">
                 <!-- ======Signup form====== -->
-                <form class="w-50 mx-auto">
+                <form class="w-50 mx-auto" id="signupForm">
                     <div class="mb-3">
                         <label for="signupEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" required>
@@ -58,7 +58,7 @@
                         <label for="signupPasswordR" class="form-label">Repeat password</label>
                         <input type="password" class="form-control" id="signupPasswordR" required>
                     </div>
-                    <button name="signupButton" type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>
