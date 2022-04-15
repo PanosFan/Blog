@@ -47,10 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $signup = new Signup;
-    $check = $signup->checkUser($email);
 
     // Check if that email has already been registered
-    if ($check) {
+    if ($signup->checkUser($email)) {
         http_response_code(400);
         echo json_encode(['error' => 'A user with that email is registered already']);
         die();
