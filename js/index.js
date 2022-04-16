@@ -1,4 +1,3 @@
-// index page
 $("#loginForm").submit((e) => {
   e.preventDefault();
   $.ajax({
@@ -15,6 +14,9 @@ $("#loginForm").submit((e) => {
     },
     error: (err) => {
       alert(err.responseJSON.error);
+    },
+    xhrFields: {
+      withCredentials: true,
     },
   });
 });
@@ -42,6 +44,8 @@ $("#signupForm").submit((e) => {
     error: (err) => {
       alert(err.responseJSON.error);
     },
+    xhrFields: {
+      withCredentials: true,
+    },
   });
 });
-// end of index page

@@ -6,15 +6,15 @@ require_once './models/dbh.php';
 require_once './models/loginModel.php';
 
 // set required headers for all requests
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://localhost:5500');
 header('Content-Type: application/json');
-
+header('Access-Control-Allow-Credentials: true');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     header('Access-Control-Allow-Methods: POST');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Credentials');
 
 
     $data = json_decode(file_get_contents("php://input"));
@@ -44,5 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         http_response_code(400);
         echo json_encode(['error' => 'User not found']);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_SESSION['user_id'])) {
+        session_unset();
+        session_destroy();
+        http_response_code(200);
+        echo json_encode(['success' => 'You logged out']);
+    } else {
+        http_response_code(400);
+        echo json_encode(['error' => 'You were not logged in']);
     }
 }

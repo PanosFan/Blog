@@ -54,23 +54,40 @@
             <button class="btn btn-outline-success" type="submit">
               Search
             </button>
+            <button type="button" class="btn btn-danger ms-2" id="logoutButton">
+              Logout
+            </button>
           </form>
         </div>
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="postsTable">
       <div class="container table-responsive mt-5">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
+              <th scope="col">Title</th>
+              <th scope="col">Post</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <td>1</td>
+            <td>Title of post</td>
+            <td>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
+              ullam deleniti laboriosam delectus sit est veniam expedita dolor
+              ex. Eum! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Vel eos delectus possimus nam molestias quisquam culpa quaerat
+              quos eum repellat quae ipsa ducimus accusamus, nemo provident
+              sequi ab aperiam ipsum.
+            </td>
+            <td>
+              <button class="btn btn-primary">Test</button>
+            </td>
+          </tbody>
         </table>
       </div>
     </div>
@@ -96,6 +113,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- My JS -->
-    <script src="./js/script.js"></script>
+    <script src="./js/home.js"></script>
   </body>
 </html>
