@@ -19,6 +19,7 @@ function extract_loop($result)
         $item = [
             'post_id' => $post_id,
             'name' => $name,
+            'surname' => $surname,
             'title' => $title,
             'body' => $body
         ];
@@ -48,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['user'])) {
     $user = $_GET['user'] ?? die();
     $post = new Post;
     $result = $post->read_by_user($user);
+    //Not calling the function to set different error message
     if ($result->rowCount() > 0) {
         extract_loop($result);
         http_response_code(200);

@@ -43,7 +43,7 @@
               <a class="nav-link" href="create_post.html">Create a post</a>
             </li>
           </ul>
-          <form class="d-flex w-25" id="search">
+          <form class="d-flex w-50" id="search">
             <input
               class="form-control me-2"
               type="search"
@@ -62,36 +62,31 @@
       </div>
     </nav>
 
-    <div class="container-fluid" id="postsTable">
-      <div class="container table-responsive mt-5">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Title</th>
-              <th scope="col">Post</th>
-              <th scope="col">User</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+    <div class="container table-responsive mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Post</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <td>1</td>
-            <td>Title of post</td>
+            <td>Title</td>
+            <td>Body</td>
+            <td>Name</td>
+            <td>Surname</td>
             <td>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
-              ullam deleniti laboriosam delectus sit est veniam expedita dolor
-              ex. Eum! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Vel eos delectus possimus nam molestias quisquam culpa quaerat
-              quos eum repellat quae ipsa ducimus accusamus, nemo provident
-              sequi ab aperiam ipsum.
+              <button class="btn btn-danger">Delete</button>
             </td>
-            <td>Panos</td>
-            <td>
-              <button class="btn btn-primary">Test</button>
-            </td>
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <footer>

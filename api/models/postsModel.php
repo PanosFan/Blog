@@ -4,7 +4,7 @@ class Post extends Dbh
 {
     public function read()
     {
-        $sql = "SELECT u.name, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id";
+        $sql = "SELECT u.name, u.surname, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id";
         $statement = $this->connect()->prepare($sql);
         if (!$statement->execute()) {
             $statement = null;
@@ -15,7 +15,7 @@ class Post extends Dbh
 
     public function read_by_user($user)
     {
-        $sql = "SELECT u.name, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id WHERE u.name=?";
+        $sql = "SELECT u.name, u.surname, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id WHERE u.name=?";
         $statement = $this->connect()->prepare($sql);
         if (!$statement->execute([$user])) {
             $statement = null;
