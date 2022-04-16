@@ -9,6 +9,7 @@ require_once './models/postsModel.php';
 header('Access-Control-Allow-Origin: http://localhost:5500');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: GET, POST, DELETE');
 
 
 function extract_loop($result)
@@ -18,6 +19,7 @@ function extract_loop($result)
         extract($result_row);
         $item = [
             'post_id' => $post_id,
+            'user_id' => $user_id,
             'name' => $name,
             'surname' => $surname,
             'title' => $title,
@@ -61,9 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['user'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    header('Access-Control-Allow-Methods: POST');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Credentials');
-
 
     $data = json_decode(file_get_contents("php://input"));
 
@@ -77,8 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    header('Access-Control-Allow-Methods: PUT');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Credentials');
 
     $data = json_decode(file_get_contents("php://input"));
     $id = $_GET['id'] ?? die();
@@ -92,10 +89,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    $id = $_GET['id'] ?? die();
+
+    $id = $_GET['id'];
 
     $post = new Post;
-    $result = $post->delete($id);
-
-    finalresponse($result);
+    echo json_encode([$_SESSION['user_id']]);
 }

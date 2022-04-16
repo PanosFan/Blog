@@ -9,12 +9,11 @@ require_once './models/loginModel.php';
 header('Access-Control-Allow-Origin: http://localhost:5500');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: GET, POST');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    header('Access-Control-Allow-Methods: POST');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Credentials');
 
 
     $data = json_decode(file_get_contents("php://input"));

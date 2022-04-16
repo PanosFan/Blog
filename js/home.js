@@ -2,7 +2,7 @@
 function fetctPosts() {
   $.ajax({
     url: "http://localhost:80/Blog/api/postsApi.php",
-    type: "GET",
+    method: "GET",
     success: (res) => {
       $("tbody").html("");
       console.log(res);
@@ -35,7 +35,7 @@ function fetchPostByID() {
     url: `http://localhost:80/Blog/api/postsApi.php?user=${$(
       "#searchVal"
     ).val()}`,
-    type: "GET",
+    method: "GET",
     success: (res) => {
       $("tbody").html("");
       console.log(res);
@@ -48,7 +48,7 @@ function fetchPostByID() {
             <td>${element.name}</td>
             <td>${element.surname}</td>
             <td>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger deletePost">Delete</button>
             </td>
           </tr>`
         );
@@ -73,7 +73,7 @@ $("#search").submit((e) => {
 $("#logoutButton").click(() => {
   $.ajax({
     url: "http://localhost:80/Blog/api/loginApi.php",
-    type: "GET",
+    method: "GET",
     success: () => {
       $(location).prop("href", "http://localhost:5500/index.html");
     },
@@ -86,5 +86,20 @@ $("#logoutButton").click(() => {
   });
 });
 // end of event listeners
+$("#test1").click(() => {
+  $.ajax({
+    url: `http://localhost:80/Blog/api/postsApi.php?id=1`,
+    method: "DELETE",
+    success: (res) => {
+      console.log(res);
+    },
+    error: (err) => {
+      console.log(err);
+    },
+    xhrFields: {
+      withCredentials: true,
+    },
+  });
+});
 
 fetctPosts();

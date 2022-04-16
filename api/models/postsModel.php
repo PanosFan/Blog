@@ -4,7 +4,7 @@ class Post extends Dbh
 {
     public function read()
     {
-        $sql = "SELECT u.name, u.surname, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id";
+        $sql = "SELECT u.name, u.user_id, u.surname, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id";
         $statement = $this->connect()->prepare($sql);
         if (!$statement->execute()) {
             $statement = null;
@@ -15,7 +15,7 @@ class Post extends Dbh
 
     public function read_by_user($user)
     {
-        $sql = "SELECT u.name, u.surname, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id WHERE u.name=?";
+        $sql = "SELECT u.name, u.user_id, u.surname, p.post_id, p.title, p.body FROM users AS u INNER JOIN posts AS p ON u.user_id = p.user_id WHERE u.name=?";
         $statement = $this->connect()->prepare($sql);
         if (!$statement->execute([$user])) {
             $statement = null;
@@ -26,7 +26,6 @@ class Post extends Dbh
 
     public function create($title, $body)
     {
-        if (!isset($_SESSION['user_id'])) die();
         $sql = "INSERT INTO posts SET user_id = ?, title = ?, body = ?, created_at = CURRENT_TIMESTAMP, updated_at = NULL";
         $statement = $this->connect()->prepare($sql);
         if (!$statement->execute([$_SESSION['user_id'], $title, $body])) {
@@ -38,7 +37,6 @@ class Post extends Dbh
 
     public function delete($id)
     {
-        if (!isset($_SESSION['user_id'])) die();
         $sql = "DELETE FROM posts WHERE post_id = ?";
         $statement = $this->connect()->prepare($sql);
         if (!$statement->execute([$id])) {
