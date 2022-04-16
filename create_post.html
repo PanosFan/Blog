@@ -52,10 +52,10 @@
 
     <!-- Create post form -->
     <div class="container">
-      <form class="mt-5 w-50 mx-auto">
+      <form class="mt-5 w-50 mx-auto" id="createPostForm">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="email" class="form-control" id="title" required />
+          <input type="text" class="form-control" id="title" required />
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Post</label>
@@ -64,16 +64,14 @@
               required
               class="form-control"
               placeholder="Leave a comment here"
-              id="floatingTextarea2"
+              id="floatingTextarea"
               style="height: 15em"
             ></textarea>
-            <label for="floatingTextarea2">Type your post</label>
+            <label for="floatingTextarea">Type your post</label>
           </div>
         </div>
 
-        <button name="postButton" type="submit" class="btn btn-primary">
-          Submit
-        </button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
 
