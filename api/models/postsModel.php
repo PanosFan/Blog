@@ -24,6 +24,17 @@ class Post extends Dbh
         return $statement;
     }
 
+    public function searchPost($user_id, $id)
+    {
+        $sql = "SELECT * FROM posts WHERE user_id=? AND post_id=?";
+        $statement = $this->connect()->prepare($sql);
+        if (!$statement->execute([$user_id, $id])) {
+            $statement = null;
+            die();
+        }
+        return $statement;
+    }
+
     public function create($title, $body)
     {
         $sql = "INSERT INTO posts SET user_id = ?, title = ?, body = ?, created_at = CURRENT_TIMESTAMP, updated_at = NULL";

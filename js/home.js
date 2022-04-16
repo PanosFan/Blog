@@ -88,13 +88,13 @@ $("#logoutButton").click(() => {
 // end of event listeners
 $("#test1").click(() => {
   $.ajax({
-    url: `http://localhost:80/Blog/api/postsApi.php?id=1`,
+    url: `http://localhost:80/Blog/api/postsApi.php?id=2`,
     method: "DELETE",
-    success: (res) => {
-      console.log(res);
+    success: () => {
+      fetctPosts();
     },
     error: (err) => {
-      console.log(err);
+      alert(err.responseJSON.error);
     },
     xhrFields: {
       withCredentials: true,

@@ -93,5 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $id = $_GET['id'];
 
     $post = new Post;
-    echo json_encode([$_SESSION['user_id']]);
+    $getSess = $post->searchPost($_SESSION['user_id'], $id);
+    if ($getSess->rowCount() > 0) {
+        $deletePost = $post->delete($id);
+        http_response_code(200);
+        echo json_encode(['success' => 'Post deleted']);
+    } else {
+        http_response_code(400);
+        echo json_encode(['error' => 'You can\'t delete this post']);
+    }
 }
