@@ -5,11 +5,10 @@ function fetctPosts() {
     method: "GET",
     success: (res) => {
       $("tbody").html("");
-      console.log(res);
       res.forEach((element) => {
         $("tbody").append(
           `<tr>
-            <td>${element.post_id}</td>
+            <td class="id">${element.post_id}</td>
             <td>${element.title}</td>
             <td>${element.body}</td>
             <td>${element.name}</td>
@@ -20,6 +19,7 @@ function fetctPosts() {
           </tr>`
         );
       });
+      getIndex();
     },
     error: (err) => {
       alert(err.responseJSON.error);
@@ -38,21 +38,21 @@ function fetchPostByID() {
     method: "GET",
     success: (res) => {
       $("tbody").html("");
-      console.log(res);
       res.forEach((element) => {
         $("tbody").append(
           `<tr>
-            <td>${element.post_id}</td>
+            <td class="id">${element.post_id}</td>
             <td>${element.title}</td>
             <td>${element.body}</td>
             <td>${element.name}</td>
             <td>${element.surname}</td>
             <td>
-              <button class="btn btn-danger deletePost">Delete</button>
+              <button class="btn btn-danger">Delete</button>
             </td>
           </tr>`
         );
       });
+      getIndexByID();
     },
     error: (err) => {
       alert(err.responseJSON.error);
@@ -86,20 +86,45 @@ $("#logoutButton").click(() => {
   });
 });
 // end of event listeners
-$("#test1").click(() => {
-  $.ajax({
-    url: `http://localhost:80/Blog/api/postsApi.php?id=2`,
-    method: "DELETE",
-    success: () => {
-      fetctPosts();
-    },
-    error: (err) => {
-      alert(err.responseJSON.error);
-    },
-    xhrFields: {
-      withCredentials: true,
-    },
+
+function getIndex() {
+  $("table .btn-danger").on("click", function () {
+    let index = $("table .btn-danger").index(this);
+    let idVal = document.querySelectorAll(".id");
+    $.ajax({
+      url: `http://localhost:80/Blog/api/postsApi.php?id=${idVal[index].innerHTML}`,
+      method: "DELETE",
+      success: () => {
+        fetctPosts();
+      },
+      error: (err) => {
+        alert(err.responseJSON.error);
+      },
+      xhrFields: {
+        withCredentials: true,
+      },
+    });
   });
-});
+}
+
+function getIndexByID() {
+  $("table .btn-danger").on("click", function () {
+    let index = $("table .btn-danger").index(this);
+    let idVal = document.querySelectorAll(".id");
+    $.ajax({
+      url: `http://localhost:80/Blog/api/postsApi.php?id=${idVal[index].innerHTML}`,
+      method: "DELETE",
+      success: () => {
+        fetchPostByID();
+      },
+      error: (err) => {
+        alert(err.responseJSON.error);
+      },
+      xhrFields: {
+        withCredentials: true,
+      },
+    });
+  });
+}
 
 fetctPosts();
