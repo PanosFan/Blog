@@ -91,6 +91,8 @@ function getIndex() {
   $("table .btn-danger").on("click", function () {
     let index = $("table .btn-danger").index(this);
     let idVal = document.querySelectorAll(".id");
+    let check = confirm("Are you sure you want to delete that post?");
+    if (!check) return false;
     $.ajax({
       url: `http://localhost:80/Blog/api/postsApi.php?id=${idVal[index].innerHTML}`,
       method: "DELETE",
@@ -111,6 +113,8 @@ function getIndexByID() {
   $("table .btn-danger").on("click", function () {
     let index = $("table .btn-danger").index(this);
     let idVal = document.querySelectorAll(".id");
+    let check = confirm("Are you sure you want to delete that post?");
+    if (!check) return false;
     $.ajax({
       url: `http://localhost:80/Blog/api/postsApi.php?id=${idVal[index].innerHTML}`,
       method: "DELETE",
