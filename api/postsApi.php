@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 
-    $id = $_GET['id'];
+    $id = $_GET['id'] ?? die();
 
     $post = new Post;
     $getSess = $post->searchPost($_SESSION['user_id'], $id);
