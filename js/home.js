@@ -14,7 +14,8 @@ function fetctPosts() {
             <td>${element.name}</td>
             <td>${element.surname}</td>
             <td>
-              <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger">Delete</button>
+          ${false ? '<button class="btn btn-danger">Delete</button>' : ""}
             </td>
           </tr>`
         );
