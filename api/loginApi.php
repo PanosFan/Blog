@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $login = new Login;
 
-    $result = $login->loginUser($email, $password);
+    $result = $login->loginUser($email);
     if ($result->rowCount() > 0) {
         $row = $result->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $row['password'])) {
